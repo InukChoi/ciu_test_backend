@@ -45,6 +45,12 @@ public class BoardDto {
     }
 
     @Getter @Builder @AllArgsConstructor @NoArgsConstructor
+    public static class ListResp {
+        private int total;
+        private List<RegisterResp> boards;
+    }
+
+    @Getter @Builder @AllArgsConstructor @NoArgsConstructor
     public static class ReadResp {
         private Long idx;
         private String title;

@@ -2,6 +2,8 @@ package com.example.ciu_test_backend.board;
 
 import com.example.ciu_test_backend.board.model.Board;
 import jakarta.persistence.LockModeType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
@@ -13,4 +15,7 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @Lock(LockModeType.PESSIMISTIC_READ)
     @Query("select b from Board b join fetch b.comments where b.idx = :idx")
     Optional<Board> findById(Long idx);
+
+    @Lock(LockModeType.PESSIMISTIC_READ)
+    Page<Board> findAll(Pageable pageable);
 }
