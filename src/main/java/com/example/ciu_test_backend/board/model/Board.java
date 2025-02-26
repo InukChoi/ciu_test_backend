@@ -22,6 +22,16 @@ public class Board {
     private String content;
     private String writer;
 
+    private Integer commentCount;
+
+    public void addCommentCount() {
+        commentCount++;
+    }
+
+    public void subCommentCount() {
+        commentCount--;
+    }
+
     @OneToMany(mappedBy = "board")
     private List<Comment> comments;
 }
