@@ -24,8 +24,8 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<BoardDto.ListResp> list(int page) {
-        BoardDto.ListResp resp = boardService.getBoards(page, 5);
+    public ResponseEntity<BoardDto.ListResp> list(int page, int size) {
+        BoardDto.ListResp resp = boardService.getBoards(page,  size);
         return ResponseEntity.ok().body(resp);
     }
 }
