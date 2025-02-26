@@ -10,8 +10,12 @@ import org.springframework.stereotype.Service;
 public class BoardService {
     private final BoardRepository boardRepository;
 
-    public BoardDto.ResponseDto createBoard(BoardDto.RegisterReq dto) {
+    public BoardDto.RegisterResp createBoard(BoardDto.RegisterReq dto) {
         Board board = boardRepository.save(dto.toEntity());
-        return BoardDto.ResponseDto.fromEntity(board);
+        return BoardDto.RegisterResp.fromEntity(board);
+    }
+
+    public BoardDto.ReadResp getBoard(Long idx) {
+        return BoardDto.ReadResp.fromEntity(boardRepository.findById(idx).orElseThrow());
     }
 }
