@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface BoardRepository extends JpaRepository<Board, Long> {
     @Lock(LockModeType.PESSIMISTIC_READ)
-//    @Query("select b from Board b join fetch b.comments where b.idx = :idx")
+    @Query("select b from Board b left join fetch b.comments where b.idx = :idx")
     Optional<Board> findById(Long idx);
 
     @Lock(LockModeType.PESSIMISTIC_READ)
