@@ -22,4 +22,10 @@ public class BoardController {
         BoardDto.ReadResp resp = boardService.getBoard(idx);
         return ResponseEntity.ok().body(resp);
     }
+
+    @GetMapping("/list")
+    public ResponseEntity<BoardDto.ListResp> list(int page, int size) {
+        BoardDto.ListResp resp = boardService.getBoards(page,  size);
+        return ResponseEntity.ok().body(resp);
+    }
 }
